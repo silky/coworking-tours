@@ -24,9 +24,15 @@
 
         /* This one needs to be changed as appropriate for responsiveness */
         #map { position:absolute; top:0; bottom:0; width:100%; }
-
+        .mapboxgl-popup {
+        }
+        .mapboxgl-popup-content {
+            max-width: 300px;
+            border-radius: 0 !important;
+        }
         .mapboxgl-popup-content h2 {
             font-family: 'com','sans-serif';
+            font-size:24px;
         }
 
         .mapboxgl-popup-content .moreinfo {
@@ -34,8 +40,10 @@
         }
 
         .mapboxgl-popup-content .dates {
-            padding:0px 0px 16px;
+            padding:0px;
             display:block;
+            font-weight:bold;
+            font-size:14px;
 
         }
 
@@ -45,9 +53,6 @@
         }
 
 
-        .mapboxgl-popup-content {
-            max-width: 300px;
-        }
         .mapboxgl-popup-content img {
             max-width: 80%;
         }
@@ -64,6 +69,14 @@
             text-transform:uppercase;
             font-size:20px;
             padding: 12px 20px;
+        }
+
+        .mapboxgl-popup-close-button {
+            background:#00aecb;
+            padding:0 6px 4px;
+            font-size:30px;
+            line-height:30px;
+            border-radius:0 !important;
         }
     </style>
 
@@ -140,7 +153,7 @@ function showData(mapData) {
                     '<h2>' + event.properties.Organisation + '</h2>' + 
                     //event.properties.excerpt + 
                     '<label class="dates">' + event.properties.Day + ', ' + event.properties.Time + '</label>' +
-                    '<p class="address">' + event.properties.Address + '</label>' +
+                    '<p class="address">' + event.properties.Address + '</p>' +
                     '<a class="moreinfo" href="' + event.properties['Eventbrite link'] + '">More information</a>'
                 ).addTo(map);
         });
@@ -173,7 +186,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2l0eW9mbWVsYm91cm5lIiwiYSI6ImNpejdob2J0czAwO
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/cityofmelbourne/cj1pz0q5d00382rp7zylkhxp1?update=1',
-    center: [144.9, -37.8],
+    center: [144.95, -37.81],
     zoom: 12
 });
 
